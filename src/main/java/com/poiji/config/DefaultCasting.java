@@ -132,13 +132,17 @@ public final class DefaultCasting implements Casting {
         if (options.getDateRegex() != null && !value.matches(options.getDateRegex())) {
             return defaultDate(options);
         } else {
-            try {
-                final SimpleDateFormat sdf = new SimpleDateFormat(options.datePattern());
-                sdf.setLenient(options.getDateLenient());
-                return sdf.parse(value);
-            } catch (ParseException e) {
-                return defaultDate(options);
+            String[] patterns = options.datePattern();
+            for(String pattern:patterns) {
+                try {
+                    final SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+                    sdf.setLenient(options.getDateLenient());
+                    return sdf.parse(value);
+                } catch (ParseException e) {
+                    continue;
+                }
             }
+            return defaultDate(options);
         }
     }
 

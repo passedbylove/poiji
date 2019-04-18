@@ -19,7 +19,7 @@ public final class PoijiOptions {
     private int sheetIndex;
     private String password;
     private String dateRegex;
-    private String datePattern;
+    private String[] datePattern;
     private boolean dateLenient;
     private boolean trimCellValue;
     private boolean ignoreHiddenSheets;
@@ -38,7 +38,7 @@ public final class PoijiOptions {
         return this;
     }
 
-    private PoijiOptions setDatePattern(String datePattern) {
+    private PoijiOptions setDatePattern(String ...datePattern) {
         this.datePattern = datePattern;
         return this;
     }
@@ -62,7 +62,7 @@ public final class PoijiOptions {
         return this;
     }
 
-    public String datePattern() {
+    public String[] datePattern() {
         return datePattern;
     }
 
@@ -164,7 +164,7 @@ public final class PoijiOptions {
         private boolean trimCellValue;
         private boolean ignoreHiddenSheets;
         private boolean preferNullOverDefault;
-        private String datePattern = DEFAULT_DATE_PATTERN;
+        private String[] datePattern = DEFAULT_DATE_PATTERN;
         private DateTimeFormatter dateTimeFormatter = DEFAULT_DATE_TIME_FORMATTER;
         private Casting casting = new DefaultCasting();
         private int headerStart = 0;
@@ -214,7 +214,7 @@ public final class PoijiOptions {
          * @param datePattern date time formatter
          * @return this
          */
-        public PoijiOptionsBuilder datePattern(String datePattern) {
+        public PoijiOptionsBuilder datePattern(String ...datePattern) {
             this.datePattern = datePattern;
             return this;
         }
