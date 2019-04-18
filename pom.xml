@@ -213,7 +213,6 @@
             <properties>
                 <!-- we need to open a specific package of a platform module to the unnamed module that uses deep reflection at runtime,
                      currently this is allowed but deep reflection in the unnamed module will not be validated in a future release of JDK at runtime -->
-                <add.opens>--add-opens java.base/java.io=ALL-UNNAMED --add-opens java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED</add.opens>
             </properties>
         </profile>
         <profile>

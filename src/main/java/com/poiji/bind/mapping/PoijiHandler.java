@@ -212,6 +212,9 @@ final class PoijiHandler<T> implements SheetContentsHandler {
         int headers = options.getHeaderStart();
 
         if (row <= headers) {
+            if(options.trimTagName()) {
+                formattedValue = formattedValue.trim();
+            }
             titles.put(formattedValue, column);
         }
 
