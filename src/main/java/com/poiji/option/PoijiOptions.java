@@ -21,6 +21,7 @@ public final class PoijiOptions {
     private String dateRegex;
     private String[] datePattern;
     private boolean dateLenient;
+    private boolean trimTagName;
     private boolean trimCellValue;
     private boolean ignoreHiddenSheets;
     private boolean preferNullOverDefault;
@@ -92,7 +93,17 @@ public final class PoijiOptions {
         return this;
     }
 
-    public boolean trimCellValue() {
+    
+    public boolean trimTagName() {
+		return trimTagName;
+	}
+
+	public PoijiOptions setTrimTagName(boolean trimTagName) {
+		this.trimTagName = trimTagName;
+		return this;
+	}
+
+	public boolean trimCellValue() {
         return trimCellValue;
     }
 
@@ -161,6 +172,7 @@ public final class PoijiOptions {
         private String password;
         private String dateRegex;
         private boolean dateLenient;
+        private boolean trimTagName;
         private boolean trimCellValue;
         private boolean ignoreHiddenSheets;
         private boolean preferNullOverDefault;
@@ -241,6 +253,7 @@ public final class PoijiOptions {
                     .setSheetIndex(sheetIndex)
                     .setSheetName(sheetName)
                     .setIgnoreHiddenSheets(ignoreHiddenSheets)
+                    .setTrimTagName(trimTagName)
                     .setTrimCellValue(trimCellValue)
                     .setDateRegex(dateRegex)
                     .setDateLenient(dateLenient)
@@ -310,7 +323,19 @@ public final class PoijiOptions {
             return this;
         }
 
+        
         /**
+         * 
+         * Trim tag name
+         * @param trimTagName trim the tag name
+         * @return this 
+         */
+        public PoijiOptionsBuilder trimTagName(boolean trimTagName){
+        	this.trimTagName = trimTagName;
+        	return this;
+        }
+        
+        /**Name
          * Trim cell value
          *
          * @param trimCellValue trim the cell value before processing work book.

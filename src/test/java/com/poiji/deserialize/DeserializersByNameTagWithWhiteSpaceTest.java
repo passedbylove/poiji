@@ -2,9 +2,8 @@ package com.poiji.deserialize;
 
 
 import com.poiji.bind.Poiji;
-import com.poiji.deserialize.model.byid.Employee;
 import com.poiji.deserialize.model.byid.Employee2;
-import com.poiji.deserialize.model.byname.EmployeeByName;
+
 import com.poiji.deserialize.model.byname.EmployeeByName2;
 import com.poiji.option.PoijiOptions;
 import com.poiji.option.PoijiOptions.PoijiOptionsBuilder;
@@ -16,7 +15,6 @@ import org.junit.runners.Parameterized;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -55,7 +53,7 @@ public class DeserializersByNameTagWithWhiteSpaceTest {
 
     @Test
     public void shouldMapExcelToJava2() {
-        PoijiOptions options = PoijiOptionsBuilder.settings().datePattern("dd/MM/yyyy","yyyy-MM-dd","yyyy/MM/dd","\\yyyy\\MM\\dd").trimCellValue(true).trimTagName(true).build();
+        PoijiOptions options = PoijiOptionsBuilder.settings().datePattern("dd/MM/yyyy","yyyy-MM-dd","yyyy/MM/dd","yyyy\\MM\\dd").trimCellValue(true).trimTagName(true).build();
         try {
             List<EmployeeByName2> actualEmployees = Poiji.fromExcel(new FileInputStream(new File(path)), EmployeeByName2.class, options);
             System.out.println(actualEmployees);
